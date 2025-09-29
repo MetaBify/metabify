@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Join our Dragonfly giveaway and win exclusive Roblox rewards. Complete garden-themed tasks to earn free Robux and unlock rare pets like the Dragonfly. Limited time event!">
+<title>Dragonfly Giveaway</title>
+<style>
+  * {margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif;}
+  body {background:black;color:white;overflow-x:hidden;position:relative;}
+
+  header {
+    position:fixed;top:0;left:0;width:100%;height:70px;
+    background:rgba(0,0,0,0.85);
+    display:flex;align-items:center;justify-content:center;
+    z-index:1000;border-bottom:1px solid #00d4ff;
+    font-size:1.2rem;
+  }
+
+  section.hero {
+    height:70vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;
+    padding:20px;position:relative;z-index:1;
+  }
+  section.hero h1 {
+    font-size:3rem;color:#00d4ff;text-shadow:0 0 20px #8b3cff;margin-bottom:20px;
+  }
+  .giveaway-btn {
+    font-size:1.5rem;padding:20px 40px;border:none;
+    border-radius:50px;background:#8b3cff;color:white;
+    cursor:pointer;animation:pulse 2s infinite;
+    box-shadow:0 0 20px #00d4ff;transition:0.3s;
+  }
+  .giveaway-btn:hover {transform:scale(1.1);background:#00d4ff;color:#000;}
+  @keyframes pulse {
+    0% {box-shadow:0 0 10px #00d4ff;}
+    50% {box-shadow:0 0 30px #8b3cff;}
+    100% {box-shadow:0 0 10px #00d4ff;}
+  }
+
+  .grid {
+    display:grid;
+    max-width:960px;width:100%;
+    gap:24px;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    margin-top:120px;
+    padding:0 20px;
+  }
+  .card {
+    background:#111;border:2px solid #00d4ff;border-radius:12px;
+    padding:16px;box-shadow:0 0 10px #8b3cff;
+    display:flex;flex-direction:column;align-items:center;
+    transition:0.3s;
+  }
+  .card:hover {box-shadow:0 0 20px #8b3cff;transform:scale(1.05);}
+  .card img {width:80px;height:80px;object-fit:cover;margin-bottom:10px;}
+  .card h3 {margin-top:12px;font-size:1.125rem;font-weight:600;text-align:center;color:#00d4ff;}
+  .card p {color:#8b3cff;margin-top:4px;text-align:center;}
+  .btn-get-robux {
+    margin-top:12px;width:100%;padding:10px 0;border-radius:9999px;
+    border:none;background:#8b3cff;color:white;font-weight:600;cursor:pointer;
+    transition:0.3s;
+  }
+  .btn-get-robux:hover {background:#00d4ff;color:#000;}
+
+  .buttons-container {
+    margin:32px 0;display:flex;gap:16px;justify-content:center;
+  }
+  .btn-load {
+    padding:8px 16px;border-radius:0.375rem;border:2px solid #00d4ff;
+    background:#111;color:#00d4ff;font-weight:600;cursor:pointer;
+    transition:0.3s;
+  }
+  .btn-load:hover {background:#00d4ff;color:#000;}
+
+  .loading {font-size:1.25rem;font-weight:bold;text-align:center;margin-top:120px;color:#00d4ff;}
+
+  /* Falling dragonflies */
+  .falling-dragonfly {
+    position:fixed;top:-50px;pointer-events:none;user-select:none;
+    opacity:1;z-index:-1;will-change:transform;
+  }
+  body {
+  background:black;
+  color:white;
+  overflow-x:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;  /* vertical centering */
+  align-items:center;      /* horizontal centering */
+  min-height:70vh;        /* full viewport height */
+}
+
+#offersGrid {
+  display: grid;
+  gap: 24px;
+  /* 5 columns maximum, but it will shrink on smaller screens */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  justify-content: center; /* center grid horizontally */
+}
+
+
+#loading {
+  font-size:1.25rem;
+  font-weight:bold;
+  color:#00d4ff;
+  margin-bottom:20px;
+}
+body {
+  background:black;
+  color:white;
+  overflow-x:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start; /* start from top, not full vertical center */
+  align-items:center;         /* center horizontally */
+  min-height:100vh;           /* full viewport height */
+  padding-top:70px;           /* space for fixed header */
+}
+
+section.hero {
+  height:auto;               /* only as tall as content */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;    /* vertically center hero content */
+  align-items:center;
+  text-align:center;
+  padding:20px 10px;         /* smaller padding to reduce vertical space */
+}
+
+.loading {
+  font-size:1.25rem;
+  font-weight:bold;
+  text-align:center;
+  margin:10px 0;              /* reduce top margin */
+  color:#00d4ff;
+}
+
+#offersGrid {
+  display:grid;
+  gap:16px;                    /* smaller gap between cards */
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  justify-content:center;
+  width:100%;
+  max-width:960px;
+  margin:0 auto;               /* center grid */
+  padding:0 10px;
+}
+</style>
+</head>
+<body>
+<!-- Username Pre-Page -->
+<section id="usernameScreen" style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:black;color:white;">
+  <h1 style="color:#00d4ff;text-shadow:0 0 10px #8b3cff;margin-bottom:20px;">Enter Your Username</h1>
+  <input id="usernameInput" type="text" placeholder="Enter username" style="padding:10px 15px;font-size:1.2rem;border-radius:8px;border:2px solid #00d4ff;background:#111;color:white;">
+  <button id="usernameBtn" style="margin-top:20px;padding:10px 20px;font-size:1.2rem;border-radius:50px;background:#8b3cff;color:white;border:none;cursor:pointer;box-shadow:0 0 20px #00d4ff;">Check Username</button>
+  <p id="usernameMessage" style="margin-top:15px;font-weight:bold;"></p>
+</section>
+
+<!-- Main Giveaway Page -->
+<section id="giveawayPage" style="display:none;">
+  <!-- Existing giveaway content goes here -->
+</section>
+
+<script>
+  const usernameScreen = document.getElementById('usernameScreen');
+  const giveawayPage = document.getElementById('giveawayPage');
+  const usernameInput = document.getElementById('usernameInput');
+  const usernameBtn = document.getElementById('usernameBtn');
+  const usernameMessage = document.getElementById('usernameMessage');
+
+  usernameBtn.addEventListener('click', () => {
+    const username = usernameInput.value.trim();
+
+    if (username.length < 3) {
+      usernameMessage.textContent = "Username not found!";
+      usernameMessage.style.color = "#ff0000"; // red
+    } else {
+      usernameMessage.textContent = "Player found! ⚡";
+      usernameMessage.style.color = "#00ff00"; // green
+
+      // Small delay before showing giveaway page
+      setTimeout(() => {
+        usernameScreen.style.display = 'none';
+        giveawayPage.style.display = 'block';
+      }, 800);
+    }
+  });
+
+  // Optional: allow pressing Enter key
+  usernameInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      usernameBtn.click();
+    }
+  });
+</script>
+<header>Dragonfly Giveaway</header>
+
+<section class="hero">
+  <h1>Complete to Join Giveaway</h1>
+</section>
+
+<div id="loading" class="loading">Loading offers...</div>
+<div class="grid" id="offersGrid"></div>
+<div class="buttons-container" id="buttonsContainer" style="display:none;">
+  <button class="btn-load" id="loadMoreBtn">More offers</button>
+  <button class="btn-load" id="showLessBtn" style="display:none;">Less offers</button>
+</div>
+
+<script>
+  const offersGrid = document.getElementById('offersGrid');
+  const loadingEl = document.getElementById('loading');
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const showLessBtn = document.getElementById('showLessBtn');
+  const buttonsContainer = document.getElementById('buttonsContainer');
+
+  let adsData = [];
+  let displayCount = 8;
+
+  function renderOffers() {
+    offersGrid.innerHTML = '';
+    adsData.slice(0, displayCount).forEach(ad => {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const img = document.createElement('img');
+      img.src = ad.network_icon;
+      img.alt = ad.name;
+      card.appendChild(img);
+
+      const title = document.createElement('h3');
+      title.textContent = ad.name;
+      card.appendChild(title);
+
+      const conversion = document.createElement('p');
+      conversion.textContent = ad.conversion;
+      card.appendChild(conversion);
+
+      const button = document.createElement('button');
+      button.className = 'btn-get-robux';
+      button.textContent = 'Join giveaway';
+      button.onclick = () => window.open(ad.url, '_blank');
+      card.appendChild(button);
+
+      offersGrid.appendChild(card);
+    });
+
+    loadMoreBtn.style.display = displayCount < adsData.length ? 'inline-block' : 'none';
+    showLessBtn.style.display = displayCount > 8 ? 'inline-block' : 'none';
+  }
+
+  function loadMore() { displayCount += 5; renderOffers(); }
+  function showLess() { displayCount = 8; renderOffers(); }
+
+  loadMoreBtn.addEventListener('click', loadMore);
+  showLessBtn.addEventListener('click', showLess);
+
+  async function fetchAds() {
+    try {
+      const res = await fetch("https://d3ept9mddcbuhi.cloudfront.net/public/offers/feed.php?user_id=623910&api_key=525aedb31fa76c26997f25d2b15e501f&s1=&s2=");
+      adsData = await res.json();
+      loadingEl.style.display = 'none';
+      buttonsContainer.style.display = 'flex';
+      renderOffers();
+    } catch (error) {
+      loadingEl.textContent = 'Failed to load offers. Disable ADBLOCKER !!';
+      console.error('Error fetching ads:', error);
+    }
+  }
+
+  fetchAds();
+</script>
+
+<script>
+  const dragonflyURL = "images/img1.png";
+  const numberOfDragonflies = 20;
+  const dragonflies = [];
+
+  function random(min, max) { return Math.random() * (max - min) + min; }
+
+  function createDragonfly() {
+    const img = document.createElement('img');
+    img.src = dragonflyURL;
+    img.className = 'falling-dragonfly';
+    img.style.left = `${random(0, window.innerWidth)}px`;
+    img.style.top = `-${random(20, 500)}px`;
+    const size = random(60, 250);
+    img.style.width = `${size}px`;
+    img.style.height = 'auto';
+    img.style.opacity = random(0.4, 1);
+    img.speed = random(0.3, 1);
+    img.drift = random(-0.3, 0.3);
+    img.angle = random(0, 360);
+    img.angleSpeed = random(0.1, 0.5);
+    document.body.appendChild(img);
+    dragonflies.push(img);
+  }
+
+  for (let i=0;i<numberOfDragonflies;i++){createDragonfly();}
+
+  function animateDragonflies() {
+    dragonflies.forEach(dragonfly => {
+      let top = parseFloat(dragonfly.style.top);
+      let left = parseFloat(dragonfly.style.left);
+      top += dragonfly.speed;
+      dragonfly.angle += dragonfly.angleSpeed;
+      left += dragonfly.drift;
+      if(left>window.innerWidth) left=0;
+      if(left<0) left=window.innerWidth;
+      if(top>window.innerHeight){
+        top=-50;
+        left=random(0,window.innerWidth);
+        const size=random(60,250);
+        dragonfly.style.width=`${size}px`;
+        dragonfly.style.opacity=random(0.4,1);
+        dragonfly.speed=random(0.3,1);
+        dragonfly.drift=random(-0.3,0.3);
+      }
+      dragonfly.style.top=`${top}px`;
+      dragonfly.style.left=`${left}px`;
+      dragonfly.style.transform=`rotate(${dragonfly.angle}deg)`;
+    });
+    requestAnimationFrame(animateDragonflies);
+  }
+  animateDragonflies();
+</script>
+
+</body>
+</html>
