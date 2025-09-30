@@ -7,7 +7,11 @@
 <title>Dragonfly Giveaway</title>
 <style>
   * {margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif;}
-  body {background:black;color:white;overflow-x:hidden;position:relative;}
+  body {
+    background:black;color:white;overflow-x:hidden;
+    display:flex;flex-direction:column;align-items:center;
+    min-height:100vh;padding-top:70px;
+  }
 
   header {
     position:fixed;top:0;left:0;width:100%;height:70px;
@@ -18,33 +22,17 @@
   }
 
   section.hero {
-    height:70vh;display:flex;flex-direction:column;
-    justify-content:center;align-items:center;text-align:center;
-    padding:20px;position:relative;z-index:1;
+    text-align:center;padding:20px 10px;
   }
   section.hero h1 {
-    font-size:3rem;color:#00d4ff;text-shadow:0 0 20px #8b3cff;margin-bottom:20px;
-  }
-  .giveaway-btn {
-    font-size:1.5rem;padding:20px 40px;border:none;
-    border-radius:50px;background:#8b3cff;color:white;
-    cursor:pointer;animation:pulse 2s infinite;
-    box-shadow:0 0 20px #00d4ff;transition:0.3s;
-  }
-  .giveaway-btn:hover {transform:scale(1.1);background:#00d4ff;color:#000;}
-  @keyframes pulse {
-    0% {box-shadow:0 0 10px #00d4ff;}
-    50% {box-shadow:0 0 30px #8b3cff;}
-    100% {box-shadow:0 0 10px #00d4ff;}
+    font-size:2.5rem;color:#00d4ff;text-shadow:0 0 20px #8b3cff;margin-bottom:20px;
   }
 
   .grid {
-    display:grid;
-    max-width:960px;width:100%;
-    gap:24px;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    margin-top:120px;
-    padding:0 20px;
+    display:grid;gap:16px;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    justify-content:center;width:100%;max-width:960px;
+    margin:0 auto;padding:0 10px;
   }
   .card {
     background:#111;border:2px solid #00d4ff;border-radius:12px;
@@ -53,7 +41,12 @@
     transition:0.3s;
   }
   .card:hover {box-shadow:0 0 20px #8b3cff;transform:scale(1.05);}
-  .card img {width:80px;height:80px;object-fit:cover;margin-bottom:10px;}
+  .card img {
+    width:100px;height:100px;
+    object-fit:contain;
+    background:#000;border-radius:8px;
+    margin-bottom:10px;
+  }
   .card h3 {margin-top:12px;font-size:1.125rem;font-weight:600;text-align:center;color:#00d4ff;}
   .card p {color:#8b3cff;margin-top:4px;text-align:center;}
   .btn-get-robux {
@@ -73,96 +66,57 @@
   }
   .btn-load:hover {background:#00d4ff;color:#000;}
 
-  .loading {font-size:1.25rem;font-weight:bold;text-align:center;margin-top:120px;color:#00d4ff;}
+  .loading {font-size:1.25rem;font-weight:bold;text-align:center;margin:20px 0;color:#00d4ff;}
 
   /* Falling dragonflies */
   .falling-dragonfly {
     position:fixed;top:-50px;pointer-events:none;user-select:none;
     opacity:1;z-index:-1;will-change:transform;
   }
-  body {
-  background:black;
-  color:white;
-  overflow-x:hidden;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;  /* vertical centering */
-  align-items:center;      /* horizontal centering */
-  min-height:70vh;        /* full viewport height */
-}
 
-#offersGrid {
-  display: grid;
-  gap: 24px;
-  /* 5 columns maximum, but it will shrink on smaller screens */
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  justify-content: center; /* center grid horizontally */
-}
-
-
-#loading {
-  font-size:1.25rem;
-  font-weight:bold;
-  color:#00d4ff;
-  margin-bottom:20px;
-}
-body {
-  background:black;
-  color:white;
-  overflow-x:hidden;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start; /* start from top, not full vertical center */
-  align-items:center;         /* center horizontally */
-  min-height:100vh;           /* full viewport height */
-  padding-top:70px;           /* space for fixed header */
-}
-
-section.hero {
-  height:auto;               /* only as tall as content */
-  display:flex;
-  flex-direction:column;
-  justify-content:center;    /* vertically center hero content */
-  align-items:center;
-  text-align:center;
-  padding:20px 10px;         /* smaller padding to reduce vertical space */
-}
-
-.loading {
-  font-size:1.25rem;
-  font-weight:bold;
-  text-align:center;
-  margin:10px 0;              /* reduce top margin */
-  color:#00d4ff;
-}
-
-#offersGrid {
-  display:grid;
-  gap:16px;                    /* smaller gap between cards */
-  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-  justify-content:center;
-  width:100%;
-  max-width:960px;
-  margin:0 auto;               /* center grid */
-  padding:0 10px;
-}
+  /* Username screen */
+  #usernameScreen {
+    height:100vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;
+    background:black;color:white;
+  }
+  #usernameScreen input {
+    padding:10px 15px;font-size:1.2rem;
+    border-radius:8px;border:2px solid #00d4ff;
+    background:#111;color:white;
+  }
+  #usernameScreen button {
+    margin-top:20px;padding:10px 20px;font-size:1.2rem;
+    border-radius:50px;background:#8b3cff;color:white;
+    border:none;cursor:pointer;box-shadow:0 0 20px #00d4ff;
+  }
 </style>
 </head>
 <body>
 <!-- Username Pre-Page -->
-<section id="usernameScreen" style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:black;color:white;">
+<section id="usernameScreen">
   <h1 style="color:#00d4ff;text-shadow:0 0 10px #8b3cff;margin-bottom:20px;">Enter Your Username</h1>
-  <input id="usernameInput" type="text" placeholder="Enter username" style="padding:10px 15px;font-size:1.2rem;border-radius:8px;border:2px solid #00d4ff;background:#111;color:white;">
-  <button id="usernameBtn" style="margin-top:20px;padding:10px 20px;font-size:1.2rem;border-radius:50px;background:#8b3cff;color:white;border:none;cursor:pointer;box-shadow:0 0 20px #00d4ff;">Check Username</button>
+  <input id="usernameInput" type="text" placeholder="Enter username">
+  <button id="usernameBtn">Check Username</button>
   <p id="usernameMessage" style="margin-top:15px;font-weight:bold;"></p>
 </section>
 
 <!-- Main Giveaway Page -->
-<section id="giveawayPage" style="display:none;">
-  <!-- Existing giveaway content goes here -->
+<section id="giveawayPage" style="display:none;width:100%;">
+  <header>Dragonfly Giveaway</header>
+  <section class="hero">
+    <h1>Complete to Join Giveaway</h1>
+  </section>
+  <div id="loading" class="loading">Loading offers...</div>
+  <div class="grid" id="offersGrid"></div>
+  <div class="buttons-container" id="buttonsContainer" style="display:none;">
+    <button class="btn-load" id="loadMoreBtn">More offers</button>
+    <button class="btn-load" id="showLessBtn" style="display:none;">Less offers</button>
+  </div>
 </section>
 
 <script>
+  /* Username screen logic */
   const usernameScreen = document.getElementById('usernameScreen');
   const giveawayPage = document.getElementById('giveawayPage');
   const usernameInput = document.getElementById('usernameInput');
@@ -171,43 +125,21 @@ section.hero {
 
   usernameBtn.addEventListener('click', () => {
     const username = usernameInput.value.trim();
-
     if (username.length < 3) {
       usernameMessage.textContent = "Username not found!";
-      usernameMessage.style.color = "#ff0000"; // red
+      usernameMessage.style.color = "#ff0000";
     } else {
       usernameMessage.textContent = "Player found! ⚡";
-      usernameMessage.style.color = "#00ff00"; // green
-
-      // Small delay before showing giveaway page
+      usernameMessage.style.color = "#00ff00";
       setTimeout(() => {
         usernameScreen.style.display = 'none';
         giveawayPage.style.display = 'block';
       }, 800);
     }
   });
+  usernameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') usernameBtn.click(); });
 
-  // Optional: allow pressing Enter key
-  usernameInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      usernameBtn.click();
-    }
-  });
-</script>
-<header>Dragonfly Giveaway</header>
-
-<section class="hero">
-  <h1>Complete to Join Giveaway</h1>
-</section>
-
-<div id="loading" class="loading">Loading offers...</div>
-<div class="grid" id="offersGrid"></div>
-<div class="buttons-container" id="buttonsContainer" style="display:none;">
-  <button class="btn-load" id="loadMoreBtn">More offers</button>
-  <button class="btn-load" id="showLessBtn" style="display:none;">Less offers</button>
-</div>
-
-<script>
+  /* Offer grid logic */
   const offersGrid = document.getElementById('offersGrid');
   const loadingEl = document.getElementById('loading');
   const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -226,6 +158,7 @@ section.hero {
       const img = document.createElement('img');
       img.src = ad.network_icon;
       img.alt = ad.name;
+      img.onerror = () => { img.src = "images/default-thumb.png"; };
       card.appendChild(img);
 
       const title = document.createElement('h3');
@@ -257,8 +190,22 @@ section.hero {
 
   async function fetchAds() {
     try {
-      const res = await fetch("https://d3ept9mddcbuhi.cloudfront.net/public/offers/feed.php?user_id=623910&api_key=525aedb31fa76c26997f25d2b15e501f&s1=&s2=");
+      const apiURL = "https://d3ept9mddcbuhi.cloudfront.net/public/offers/feed.php";
+      const params = new URLSearchParams({
+        user_id: "623910",
+        api_key: "525aedb31fa76c26997f25d2b15e501f",
+        s1: "",
+        s2: ""
+      });
+      const res = await fetch(`${apiURL}?${params.toString()}`);
       adsData = await res.json();
+
+      // fallback default thumbs
+      adsData = adsData.map(ad => ({
+        ...ad,
+        network_icon: ad.network_icon || "images/default-thumb.png"
+      }));
+
       loadingEl.style.display = 'none';
       buttonsContainer.style.display = 'flex';
       renderOffers();
@@ -267,17 +214,14 @@ section.hero {
       console.error('Error fetching ads:', error);
     }
   }
-
   fetchAds();
-</script>
 
-<script>
+  /* Falling dragonflies */
   const dragonflyURL = "images/img1.png";
   const numberOfDragonflies = 20;
   const dragonflies = [];
 
   function random(min, max) { return Math.random() * (max - min) + min; }
-
   function createDragonfly() {
     const img = document.createElement('img');
     img.src = dragonflyURL;
@@ -286,7 +230,6 @@ section.hero {
     img.style.top = `-${random(20, 500)}px`;
     const size = random(60, 250);
     img.style.width = `${size}px`;
-    img.style.height = 'auto';
     img.style.opacity = random(0.4, 1);
     img.speed = random(0.3, 1);
     img.drift = random(-0.3, 0.3);
@@ -295,35 +238,29 @@ section.hero {
     document.body.appendChild(img);
     dragonflies.push(img);
   }
-
   for (let i=0;i<numberOfDragonflies;i++){createDragonfly();}
-
   function animateDragonflies() {
-    dragonflies.forEach(dragonfly => {
-      let top = parseFloat(dragonfly.style.top);
-      let left = parseFloat(dragonfly.style.left);
-      top += dragonfly.speed;
-      dragonfly.angle += dragonfly.angleSpeed;
-      left += dragonfly.drift;
+    dragonflies.forEach(d => {
+      let top = parseFloat(d.style.top);
+      let left = parseFloat(d.style.left);
+      top += d.speed; d.angle += d.angleSpeed; left += d.drift;
       if(left>window.innerWidth) left=0;
       if(left<0) left=window.innerWidth;
       if(top>window.innerHeight){
-        top=-50;
-        left=random(0,window.innerWidth);
+        top=-50; left=random(0,window.innerWidth);
         const size=random(60,250);
-        dragonfly.style.width=`${size}px`;
-        dragonfly.style.opacity=random(0.4,1);
-        dragonfly.speed=random(0.3,1);
-        dragonfly.drift=random(-0.3,0.3);
+        d.style.width=`${size}px`;
+        d.style.opacity=random(0.4,1);
+        d.speed=random(0.3,1);
+        d.drift=random(-0.3,0.3);
       }
-      dragonfly.style.top=`${top}px`;
-      dragonfly.style.left=`${left}px`;
-      dragonfly.style.transform=`rotate(${dragonfly.angle}deg)`;
+      d.style.top=`${top}px`;
+      d.style.left=`${left}px`;
+      d.style.transform=`rotate(${d.angle}deg)`;
     });
     requestAnimationFrame(animateDragonflies);
   }
   animateDragonflies();
 </script>
-
 </body>
 </html>
